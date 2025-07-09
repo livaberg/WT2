@@ -1,0 +1,94 @@
+/* Grundläggande reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hela sidan */
+body {
+  font-family: 'Roboto', sans-serif; /* Använd ett modernt typsnitt */
+  background-color: #f7f9fc; /* Ljusgrå bakgrund */
+  color: #817e7e; /* Mörkgrå text för bättre kontrast */
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Sektioner - Dela upp sidan i två delar */
+.main-content {
+  flex: 1;
+  padding: 40px 20px; /* Ger luft åt innehållet */
+  text-align: center;
+  background-color: #e4effc; /* Ljusblå bakgrund för huvudinnehållet */
+}
+
+.main-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #817e7e; /* Ljusare grå för rubriker */
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  color: #817e7e; /* Mörkare grå för text */
+}
+
+/* Header (övre del) */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Logotypen till vänster */
+  padding-left: 30px;
+  background-color: #cfdef8; /* Ljusare blå för header */
+  color: #817e7e;
+  text-align: left;
+  height: 15vh; /* Ge mer utrymme åt headern */
+}
+
+.header h1 {
+  font-size: 2.4rem;
+  margin-left: 20px; /* Luft mellan loggan och text */
+  font-weight: 500; /* Mindre fetstil för elegans */
+}
+
+/* Footer (nedre del) */
+.footer {
+  background-color: #cfdef8; /* Samma som header för enhetlig design */
+  color: #817e7e;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Logotyp */
+.logo {
+  margin-right: 16px; /* Luft mellan loggan och <h1> */
+  width: 50px;
+  height: 50px;
+}
+
+/* Lägg till en knappstil som exempel */
+button {
+  background-color: #3a7bd5; /* Accentfärg */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2a65b5; /* Mörkare blå vid hover */
+}

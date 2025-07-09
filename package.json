@@ -2,14 +2,15 @@
   "name": "assignment-wt2",
   "version": "1.0.0",
   "description": "1DV027 - Assignment WT2",
-  "type": "module",
-  "main": "src/server.js",
+   "workspaces": [
+    "server",
+    "client"
+  ],
   "engines": {
     "node": ">=20.6.0"
   },
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon --inspect --env-file=.env src/server.js",
+    "start": "concurrently \"npm run start --workspace=server\" \"npm run start --workspace=client\"",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
   },
@@ -19,14 +20,11 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@lnu/json-js-cycle": "^2.0.5",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.18.2",
-    "helmet": "^7.1.0"
   },
   "devDependencies": {
     "@lnu/eslint-config": "^1.1.10",
-    "nodemon": "^3.0.3"
+    "concurrently": "^9.2.0",
+    "prettier": "^3.5.3",
+    "eslint-config-prettier": "^10.1.5"
   }
 }

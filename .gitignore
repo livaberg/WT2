@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node,macos,visualstudiocode,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,visualstudiocode,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,macos,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,visualstudiocode,macos,dotenv
 
 ### dotenv ###
 .env
@@ -195,4 +195,7 @@ dist
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/node,macos,visualstudiocode,dotenv
+# CSV files for database population
+dataset/
+
+# End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,macos,dotenv

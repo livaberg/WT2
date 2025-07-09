@@ -1,0 +1,40 @@
+{
+  "name": "assignment-wt2-server",
+  "version": "1.0.0",
+  "description": "1DV027 assignment WT2 - Server",
+  "type": "module",
+  "main": "./server.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node ./server.js",
+    "dev": "nodemon --inspect ./server.js",
+    "seed": "node ./seeds/seed.js"
+  },
+  "contributors": [
+    "Liv Åberg <lh224hh@student.lnu.se>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@lnu/json-js-cycle": "^2.0.5",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.17.0",
+    "mongoose": "^7.8.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
