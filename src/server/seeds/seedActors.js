@@ -3,8 +3,8 @@ import path from 'path'
 import csv from 'csv-parser'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import { ActorModel } from '../src/models/actor.js'
-import { MovieModel } from '../src/models/movie.js'
+import { ActorModel } from '../models/actor.js'
+import { MovieModel } from '../models/movie.js'
 
 dotenv.config()
 
@@ -38,7 +38,7 @@ const seedActors = async () => {
 
     // Read and parse the CSV file
     await new Promise((resolve, reject) => {
-      fs.createReadStream(path.resolve('../dataset/credits.csv'))
+      fs.createReadStream(path.resolve('./dataset/credits.csv'))
         .pipe(csv())
         .on('data', (row) => {
           try {

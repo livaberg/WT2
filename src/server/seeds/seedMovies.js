@@ -3,7 +3,7 @@ import path from 'path'
 import csv from 'csv-parser'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import { MovieModel } from '../src/models/movie.js'
+import { MovieModel } from '../models/movie.js'
 
 dotenv.config()
 
@@ -50,7 +50,7 @@ const seedMovies = async () => {
     let count = 0
 
     return new Promise((resolve, reject) => {
-      fs.createReadStream(path.resolve('../dataset/movies_metadata.csv'))
+      fs.createReadStream(path.resolve('./dataset/movies_metadata.csv'))
         .pipe(csv())
         .on('data', (data) => {
           if (count < maxEntries) {

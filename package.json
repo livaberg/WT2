@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "1DV027 - Assignment WT2",
    "workspaces": [
-    "server",
-    "client"
+    "src/server",
+    "src/client"
   ],
   "engines": {
     "node": ">=20.6.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run start --workspace=server\" \"npm run start --workspace=client\"",
+    "start": "concurrently \"npm run start --workspace=src/server\" \"echo 'No client yet'\"",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
   },

@@ -17,24 +17,4 @@ const ratingRepository = new RatingRepository()
 const ratingService = new RatingService(ratingRepository)
 const ratingController = new RatingController(ratingService)
 
-/**
- * @swagger
- * /ratings:
- *   get:
- *     tags:
- *       - Ratings
- *     summary: Get all ratings
- *     parameters:
- *       - in: query
- *         name: page
- *         schema:
- *           type: integer
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
- *     responses:
- *       200:
- *         description: List of ratings
- */
 router.get('/', validateQueries, (req, res) => ratingController.getAllRatings(req, res))

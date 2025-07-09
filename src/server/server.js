@@ -13,8 +13,7 @@ import http from 'http' // Node.js HTTP module for creating the server
 import '@lnu/json-js-cycle'
 import rateLimit from 'express-rate-limit' // Middleware for rate limiting
 
-import { connectToDatabase } from '../db.js' // Function to connect to MongoDB
-import { swaggerUi, swaggerSpec } from './docs/swagger.js' // Swagger UI for API documentation
+import { connectToDatabase } from './db.js' // Function to connect to MongoDB
 import { router as apiRouter } from './routes/router.js' // Main router for handling API routes
 
 dotenv.config() // Load environment variables from .env file
@@ -53,9 +52,6 @@ app.use(globalLimiter)
 
 // Register routes.
 app.use('/api/v1', apiRouter)
-
-// Use the Swagger UI middleware to serve API documentation.
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 // Error handler.
 app.use((err, req, res, next) => {

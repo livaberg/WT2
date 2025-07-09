@@ -3,8 +3,8 @@ import path from 'path'
 import csv from 'csv-parser'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import { RatingModel } from '../src/models/rating.js'
-import { MovieModel } from '../src/models/movie.js'
+import { RatingModel } from '../models/rating.js'
+import { MovieModel } from '../models/movie.js'
 
 dotenv.config()
 
@@ -24,20 +24,20 @@ const seedRatings = async () => {
     if (mongoose.connection.readyState === 0) {
       await mongoose.connect(MONGODB_URI, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
       })
     }
 
     // Fetch all movies to create a mapping from TMDB IDs to MongoDB Object IDs
     const movies = await MovieModel.find({}, { tmdbId: 1, _id: 1 }).lean()
-    const tmdbToMongoIdMap = new Map(movies.map(m => [m.tmdbId, m._id]))
+    const tmdbToMongoIdMap = new Map(movies.map((m) => [m.tmdbId, m._id]))
 
     const results = []
     let count = 0
     const maxEntries = 10000 // Limit the number of ratings to seed for performance issues
 
     await new Promise((resolve, reject) => {
-      fs.createReadStream(path.resolve('../dataset/ratings_small.csv'))
+      fs.createReadStream(path.resolve('./dataset/ratings_small.csv'))
         .pipe(csv())
         .on('data', (data) => {
           const tmdbMovieId = Number(data.movieId)
@@ -47,7 +47,7 @@ const seedRatings = async () => {
               // Assign a unique ID for each rating
               id: count + 1,
               rating: Number(data.rating),
-              movie: mongoMovieId
+              movie: mongoMovieId,
             })
             count++
           }
