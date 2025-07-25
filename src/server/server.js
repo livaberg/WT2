@@ -10,11 +10,16 @@ import express from 'express' // Express framework
 import helmet from 'helmet' // Middleware for setting various HTTP headers for security
 import dotenv from 'dotenv' // Module to load environment variables from a .env file
 import http from 'http' // Node.js HTTP module for creating the server
+import path from 'path' // Node.js module for handling file paths
+import { fileURLToPath } from 'url' // Import fileURLToPath for ESM __dirname/__filename support
 import '@lnu/json-js-cycle'
 import rateLimit from 'express-rate-limit' // Middleware for rate limiting
 
 import { connectToDatabase } from './db.js' // Function to connect to MongoDB
 import { router as apiRouter } from './routes/router.js' // Main router for handling API routes
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 dotenv.config() // Load environment variables from .env file
 
@@ -43,7 +48,7 @@ app.use(cors())
 app.use(express.json())
 
 const globalLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minut
+  windowMs: 1 * 60 * 1000, // 1 minute
   max: 100, // Max 100 requests per IP
   message: 'Too many requests. Please slow down.',
 })
@@ -52,6 +57,9 @@ app.use(globalLimiter)
 
 // Register routes.
 app.use('/api/v1', apiRouter)
+
+// Serve static files from the client folder
+app.use(express.static(path.join(__dirname, '../client')))
 
 // Error handler.
 app.use((err, req, res, next) => {

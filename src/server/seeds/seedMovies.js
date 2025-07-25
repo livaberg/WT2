@@ -28,7 +28,7 @@ function parseGenres (genresString) {
 }
 
 /**
- * Seed the first 200 movies from a CSV file into the MongoDB database.
+ * Seed the first 1 000 movies from a CSV file into the MongoDB database.
  * Clears existing movies before inserting new ones.
  *
  * @async
@@ -46,7 +46,7 @@ const seedMovies = async () => {
     }
 
     const results = []
-    const maxEntries = 200
+    const maxEntries = 1000
     let count = 0
 
     return new Promise((resolve, reject) => {

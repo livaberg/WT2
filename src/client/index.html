@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WT2</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-title">
+        <img src="favicon.ico" alt="Logo" width="30" height="30" class="logo" />
+        <h1>WT2</h1>
+      </div>
+      <div class="header-right">
+        <div class="controls">
+          <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="" />
+            <i class="fas fa-search"></i>
+          </div>
+          <select id="genreFilter">
+            <option value="">Genre</option>
+            <option value="Action">Action</option>
+            <option value="Drama">Drama</option>
+            <option value="Comedy">Comedy</option>
+          </select>
+        </div>
+        <div class="menu">
+          <span>☰</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <h2>Movie Data Visualization 🎬</h2>
+      <p></p>
+
+      <div class="visualization-container">
+        <section class="visualization">
+          <h3>Number of Movies by Genre</h3>
+          <div id="genreChart"></div>
+        </section>
+
+        <section class="visualization">
+          <h3>Movies per Year</h3>
+          <div id="yearChart"></div>
+        </section>
+
+        <section class="visualization">
+          <h3>Top 10 Highest Rated Movies</h3>
+          <ul id="topRatedMoviesList"></ul>
+        </section>
+        <!-- <div id="plot"></div> -->
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Linnaeus University.</p>
+    </footer>
+
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
