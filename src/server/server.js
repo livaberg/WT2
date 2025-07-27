@@ -59,7 +59,7 @@ app.use(globalLimiter)
 app.use('/api/v1', apiRouter)
 
 // Serve static files from the client folder
-app.use(express.static(path.join(__dirname, '../client')))
+app.use(express.static(path.join(__dirname, '../client/dist')))
 
 // Error handler.
 app.use((err, req, res, next) => {

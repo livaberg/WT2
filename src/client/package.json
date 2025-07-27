@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "1DV027 assignment WT2 - Client",
   "type": "module",
-
   "scripts": {
-    "start": "echo 'No client start needed — served by Express backend'"
+    "start": "echo 'No client start needed — served by Express backend'",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "contributors": [
     "Liv Åberg <lh224hh@student.lnu.se>"
   ],
   "license": "MIT",
   "private": true,
-  "dependencies": {
-  },
   "devDependencies": {
+    "vite": "^7.0.0"
   }
 }

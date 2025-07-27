@@ -2,7 +2,7 @@
   "name": "assignment-wt2",
   "version": "1.0.0",
   "description": "1DV027 - Assignment WT2",
-   "workspaces": [
+  "workspaces": [
     "src/server",
     "src/client"
   ],
@@ -10,17 +10,18 @@
     "node": ">=20.6.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run start --workspace=src/server\" \"npm run start --workspace=src/client\"",
+    "start": "npm run build --workspace=src/client && npm run start --workspace=src/server",
+    "dev": "concurrently \"npm run start --workspace=src/server\" \"npm run dev --workspace=src/client\"",
     "lint": "npx eslint ./src || exit 0",
-    "lint:fix": "npx eslint ./src --fix || exit 0"
+    "lint:fix": "npx eslint ./src --fix || exit 0",
+    "seed": "npm run seed --workspace=src/server"
   },
   "contributors": [
     "Liv Åberg <lh224hh@student.lnu.se>"
   ],
   "license": "MIT",
   "private": true,
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@lnu/eslint-config": "^1.1.10",
     "concurrently": "^9.2.0",
