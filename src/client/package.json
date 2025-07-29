@@ -16,5 +16,8 @@
   "private": true,
   "devDependencies": {
     "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.8"
   }
 }
