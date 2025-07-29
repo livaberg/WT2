@@ -1,0 +1,42 @@
+@media (max-width: 1500px) {
+  .visualization-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+    height: auto;
+    padding: 1rem 20px;
+  }
+
+  .logo-title {
+    margin-bottom: 1rem;
+    justify-content: flex-start;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .main-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .main-content p {
+    font-size: 1rem;
+  }
+
+  .footer p {
+    font-size: 1rem;
+  }
+
+  .visualization-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

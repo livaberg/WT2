@@ -5,7 +5,8 @@
     <link rel="icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WT2</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- <link rel="stylesheet" href="./css/styles-responsive.css" /> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link
       rel="stylesheet"
@@ -15,7 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Chewy&display=swap"
       rel="stylesheet"
     />
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </head>
   <body>
     <header class="header">
@@ -29,12 +30,6 @@
             <input type="text" id="searchInput" placeholder="" />
             <i class="fas fa-search"></i>
           </div>
-          <select id="genreFilter">
-            <option value="">Genre</option>
-            <option value="Action">Action</option>
-            <option value="Drama">Drama</option>
-            <option value="Comedy">Comedy</option>
-          </select>
         </div>
         <div class="menu">
           <span>☰</span>
@@ -44,10 +39,16 @@
 
     <main class="main-content">
       <h2>Movie Data Visualization 🎬</h2>
-      <p></p>
+      <p>
+        Welcome to this inspirational space! This is a visualization of movie
+        data, allowing you to explore the top-rated movies based on user
+        reviews, with options to filter by genre if desired. The menu and search
+        functionality are yet to be implemented, but will be added in the
+        future. Enjoy your stay!
+      </p>
 
       <div class="visualization-container">
-        <section class="visualization">
+        <!-- <section class="visualization">
           <h3>1</h3>
           <div id="genreChart"></div>
         </section>
@@ -55,16 +56,39 @@
         <section class="visualization">
           <h3>2</h3>
           <div id="yearChart"></div>
-        </section>
+        </section> -->
 
         <section class="visualization">
           <h3>Top 10 Highest Rated Movies</h3>
+          <p>
+            The ten most highly rated movies based on user reviews, each with at
+            least 3 ratings. Hover over a movie for more details.
+          </p>
+
           <div id="loading">
             <i class="fas fa-spinner fa-spin"></i>
             <span>Loading...</span>
           </div>
           <canvas id="myChart"></canvas>
           <ul id="topRatedMoviesList"></ul>
+          <label for="genreFilter">Filter by genre:</label>
+          <select id="genreFilter">
+            <option value="">All</option>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="Crime">Crime</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Family">Family</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="History">History</option>
+            <option value="Horror">Horror</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Thriller">Thriller</option>
+          </select>
         </section>
       </div>
     </main>

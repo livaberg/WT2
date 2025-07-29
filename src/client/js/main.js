@@ -1,5 +1,7 @@
 import { Chart } from 'chart.js/auto'
 
+let currentChart = null
+
 /**
  * Sleep function to pause execution for a given number of milliseconds.
  *
@@ -9,6 +11,10 @@ import { Chart } from 'chart.js/auto'
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+document.getElementById('genreFilter').addEventListener('change', () => {
+  getTopRatedMovies()
+})
 
 /**
  * Fetches the ten top-rated movies and displays them in a chart.
@@ -60,10 +66,31 @@ async function getTopRatedMovies() {
     return { movieId, avgRating: avg, count: scores.length }
   })
 
-  const top10 = avgRatings
-    .filter((r) => r.count >= 3)
-    .sort((a, b) => b.avgRating - a.avgRating)
-    .slice(0, 10)
+  // Get selected genre
+  const selectedGenre = document
+    .getElementById('genreFilter')
+    .value.toLowerCase()
+
+  // Fetch movie data before filtering
+  const enrichedRatings = await Promise.all(
+    avgRatings.map(async (r) => {
+      const res = await fetch(`/api/v1/movies/${r.movieId}`)
+      const movieData = await res.json()
+      return {
+        ...r,
+        genre: movieData.data.genre || '',
+        title: movieData.data.title || 'Unknown',
+      }
+    })
+  )
+
+  const filtered = enrichedRatings.filter(
+    (r) =>
+      (!selectedGenre || r.genre.toLowerCase().includes(selectedGenre)) &&
+      r.count >= 3
+  )
+
+  const top10 = filtered.sort((a, b) => b.avgRating - a.avgRating).slice(0, 10)
 
   const movies = await Promise.all(
     top10.map(async (r) => {
@@ -121,8 +148,12 @@ async function getTopRatedMovies() {
     'rgba(0, 102, 153, 1)',
   ]
 
+  if (currentChart) {
+    currentChart.destroy()
+  }
+
   // eslint-disable-next-line no-new
-  new Chart(ctx, {
+  currentChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: chartLabels,
