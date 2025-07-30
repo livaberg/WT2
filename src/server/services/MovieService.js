@@ -62,6 +62,52 @@ export class MovieService {
   }
 
   /**
+   * Retrieves the top-rated movies based on genre and minimum votes.
+   *
+   * @param {object} query - The query parameters for filtering and pagination.
+   * @returns {Promise<object>} - A promise that resolves to an object containing the top-rated movies and metadata.
+   */
+  async getTopRated(query) {
+    // Default values for genre, minVotes, and limit
+    const genre = (query.genre ?? '').trim()
+    const minVotes = Math.min(
+      100,
+      Math.max(1, parseInt(query.minVotes ?? '3', 10) || 3)
+    )
+    const limit = Math.min(
+      50,
+      Math.max(1, parseInt(query.limit ?? '10', 10) || 10)
+    )
+    const genreRegex = genre ? new RegExp(genre, 'i') : null
+
+    // Fetch top-rated movies from the repository
+    const rows = await this.ratingRepository.getTopRatedAggregates({
+      genreRegex,
+      minVotes,
+      limit,
+    })
+
+    // Minimal payload with numbers
+    const data = rows.map((r) => ({
+      movieId: r.movieId,
+      title: r.title,
+      genre: r.genre ?? null,
+      avgRating: Number(r.avgRating),
+      voteCount: Number(r.voteCount),
+    }))
+
+    return {
+      data,
+      meta: {
+        generatedAt: new Date().toISOString(),
+        limit,
+        minVotes,
+        genre: genre || null,
+      },
+    }
+  }
+
+  /**
    * Retrieves a single movie by its ID.
    *
    * @param {string} id - The ID of the movie to retrieve.

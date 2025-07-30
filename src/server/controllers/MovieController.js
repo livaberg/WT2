@@ -90,6 +90,30 @@ export class MovieController {
   }
 
   /**
+   * Retrieves the top-rated movies based on genre and minimum votes.
+   *
+   * @param {object} req - Express request object with query parameters: genre, minVotes, limit.
+   * @param {object} res - Express response object.
+   * @returns {Promise<void>} - A promise that resolves when the operation is complete.
+   */
+  async getTopRated(req, res) {
+    try {
+      const { data, meta } = await this.movieService.getTopRated(req.query)
+      res.status(200).json({
+        data,
+        meta,
+        links: {
+          self: req.originalUrl,
+        },
+      })
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: 'Failed to fetch movie.', error: error.message })
+    }
+  }
+
+  /**
    * Retrieves a single movie by its ID.
    *
    * @param {object} req - Express request object.
@@ -230,12 +254,12 @@ export class MovieController {
     try {
       const ratings = await this.movieService.getMovieRatings(req.params.id)
 
-      const formattedRatings = ratings.map(r => ({
+      const formattedRatings = ratings.map((r) => ({
         id: r._id,
         rating: r.rating,
         links: {
-          movie: `/movies/${r.movie}`
-        }
+          movie: `/movies/${r.movie}`,
+        },
       }))
 
       res.status(200).json({

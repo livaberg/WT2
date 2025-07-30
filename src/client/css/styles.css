@@ -6,24 +6,23 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   font-family: 'Chewy', cursive, system-ui, sans-serif;
   letter-spacing: 0.1em;
-  /* background: linear-gradient(45deg, #d9e4ff, #93b8ff); */
   color: #817e7e;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
   margin: 0;
 
-  background-color: #d9e4ff;
+  background-color: #e8efff;
 
   background-image:
-    url('data:image/svg+xml;utf8,<svg width="1440" height="320" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23d9e4ff" fill-opacity="0.5" d="M0,64L60,80C120,96,240,128,360,144C480,160,600,160,720,133.3C840,107,960,53,1080,48C1200,43,1320,85,1380,106.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>'),
-    linear-gradient(45deg, #d9e4ff, #93b8ff);
+    url('data:image/svg+xml;utf8,<svg width="1440" height="320" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23e8efff" fill-opacity="0.5" d="M0,64L60,80C120,96,240,128,360,144C480,160,600,160,720,133.3C840,107,960,53,1080,48C1200,43,1320,85,1380,106.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>'),
+    linear-gradient(45deg, #e8efff, #a2c2ff);
   background-repeat: no-repeat, no-repeat;
   background-position: bottom, center;
   background-size: cover, cover;
@@ -171,8 +170,7 @@ body {
 }
 
 .visualization {
-  max-width: 800px;
-  width: 100%;
+  max-width: 1200px;
   background-color: white;
   padding: 1rem;
   border-radius: 8px;

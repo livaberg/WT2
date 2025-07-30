@@ -3,6 +3,9 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .visualization {
+  }
 }
 
 @media (max-width: 768px) {
@@ -38,5 +41,10 @@
   .visualization-container {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .visualization {
+    max-width: 100%;
+    padding: 1rem;
   }
 }

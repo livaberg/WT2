@@ -23,15 +23,26 @@ router.param('id', (req, res, next, id) =>
   movieController.loadMovieDocument(req, res, next, id)
 )
 
-router.get('/', validateQueries, (req, res) => movieController.getAllMovies(req, res))
+router.get('/', validateQueries, (req, res) =>
+  movieController.getAllMovies(req, res)
+)
+
+router.get('/top-rated', validateQueries, (req, res) =>
+  movieController.getTopRated(req, res)
+)
 
 router.get('/:id', (req, res) => movieController.getMovie(req, res))
 
-router.post('/', validateBody, (req, res) => movieController.createMovie(req, res))
+router.post('/', validateBody, (req, res) =>
+  movieController.createMovie(req, res)
+)
 
-router.put('/:id', validateBody, (req, res) => movieController.updateMovie(req, res))
+router.put('/:id', validateBody, (req, res) =>
+  movieController.updateMovie(req, res)
+)
 
 router.delete('/:id', (req, res) => movieController.deleteMovie(req, res))
 
 router.get('/:id/ratings', (req, res) =>
-movieController.getMovieRatings(req, res))
+  movieController.getMovieRatings(req, res)
+)
