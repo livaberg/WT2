@@ -19,17 +19,16 @@ body {
   margin: 0;
 
   background-color: #e8efff;
-
   background-image:
-    url('data:image/svg+xml;utf8,<svg width="1440" height="320" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23e8efff" fill-opacity="0.5" d="M0,64L60,80C120,96,240,128,360,144C480,160,600,160,720,133.3C840,107,960,53,1080,48C1200,43,1320,85,1380,106.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>'),
-    linear-gradient(45deg, #e8efff, #a2c2ff);
+    url('data:image/svg+xml;utf8,<svg width="1440" height="320" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23f8f6f0" fill-opacity="1.0" d="M0,64L60,80C120,96,240,128,360,144C480,160,600,160,720,133.3C840,107,960,53,1080,48C1200,43,1320,85,1380,106.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>'),
+    linear-gradient(45deg, #fffdfa, #ededec);
   background-repeat: no-repeat, no-repeat;
   background-position: bottom, center;
   background-size: cover, cover;
 }
 
 .header {
-  background-color: #e3ebff;
+  background-color: #f3e4ee;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -149,11 +148,27 @@ body {
   padding: 6rem;
 }
 
+#mm-logo {
+  position: absolute;
+  bottom: 57vh;
+  left: 18vw;
+  height: 50vh;
+  z-index: 999;
+  pointer-events: none;
+}
+
 .main-content h2 {
-  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
   margin-bottom: 40px;
   color: #817e7e;
   text-align: center;
+}
+
+.main-content img {
+  height: 1000px;
 }
 
 .main-content p {
@@ -179,13 +194,14 @@ body {
 }
 
 .visualization h3 {
-  font-size: 2rem;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 #myChart {
-  padding-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
 
 #loading {
@@ -196,6 +212,37 @@ body {
   gap: 1rem;
   font-size: 1.5rem;
   color: #555;
+}
+
+#genreFilter {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #b0b0b0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    background-color 120ms ease;
+}
+
+#genreFilter:hover:not(:disabled) {
+  border-color: #8aaefc;
+  background-color: #f6f9ff;
+}
+
+#genreFilter:focus-visible {
+  outline: none;
+  border-color: #6c97ff;
+  box-shadow: 0 0 0 3px rgba(162, 194, 255, 0.6);
+}
+
+#genreFilter:disabled {
+  cursor: not-allowed;
+  color: #9a9a9a;
+  background-color: #f2f2f2;
+  border-color: #d0d0d0;
+  opacity: 0.8;
 }
 
 .footer {
@@ -212,11 +259,4 @@ body {
   font-weight: normal;
   text-align: left;
   padding-left: 30px;
-}
-
-#genreFilter {
-  padding: 0.5rem 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #b0b0b0;
-  border-radius: 6px;
 }

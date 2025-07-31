@@ -6,6 +6,7 @@
 import { Chart } from 'chart.js/auto'
 
 let currentChart = null
+let currentController
 
 const chartColors = [
   'rgba(255, 99, 132, 0.3)',
@@ -44,13 +45,22 @@ document.getElementById('genreFilter').addEventListener('change', () => {
  * @throws {Error} - If there is an error fetching the data or rendering the chart.
  */
 async function getTopRatedMovies() {
+  if (currentController)
+    // Abort the previous request if it exists
+    currentController.abort()
+  currentController = new AbortController()
+  const { signal } = currentController
+
   const loadingElem = document.getElementById('loading')
+  const chartElem = document.getElementById('myChart')
+
+  const genreSelect = document.getElementById('genreFilter')
   loadingElem.style.display = 'flex'
+  genreSelect.disabled = true
   loadingElem.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...'
 
   try {
-    // Get the selected genre from the filter input
-    const selectedGenre = document.getElementById('genreFilter').value.trim()
+    const selectedGenre = genreSelect.value.trim()
     const queryParams = new URLSearchParams()
     if (selectedGenre) {
       queryParams.append('genre', selectedGenre)
@@ -60,7 +70,8 @@ async function getTopRatedMovies() {
 
     // Fetch the top-rated movies from the API
     const res = await fetch(
-      `/api/v1/movies/top-rated?${queryParams.toString()}`
+      `/api/v1/movies/top-rated?${queryParams.toString()}`,
+      { signal }
     )
 
     if (!res.ok) {
@@ -74,18 +85,11 @@ async function getTopRatedMovies() {
     const chartData = result.data.map((m) => m.avgRating)
     const voteCounts = result.data.map((m) => m.voteCount)
 
-    loadingElem.style.display = 'none'
-
     const ctx = document.getElementById('myChart')
 
-    if (!(ctx instanceof HTMLCanvasElement)) {
-      console.error('Canvas element not found')
-      return
-    }
+    if (!(ctx instanceof HTMLCanvasElement)) return
 
-    if (currentChart) {
-      currentChart.destroy()
-    }
+    if (currentChart) currentChart.destroy()
 
     // Build and render the chart with Chart.js
     currentChart = new Chart(ctx, {
@@ -136,9 +140,16 @@ async function getTopRatedMovies() {
       },
     })
   } catch (error) {
+    if (error.name !== 'AbortError') {
+      console.error('Failed to load top rated movies:', error)
+      alert('Failed to load top rated movies. Please try again later.')
+    }
+  } finally {
+    // Re-enable the genre filter after loading
     loadingElem.style.display = 'none'
-    console.error('Failed to load top rated movies:', error)
-    alert('Failed to load top rated movies. Please try again later.')
+    loadingElem.hidden = true
+    chartElem.hidden = false
+    genreSelect.disabled = false
   }
 }
 

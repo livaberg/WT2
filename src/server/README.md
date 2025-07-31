@@ -22,7 +22,6 @@ Express
 Javascript  
 MongoDB  
 Mongoose  
-JWT  
 Postman
 
 ## Testing
