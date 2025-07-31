@@ -32,7 +32,7 @@ A search field is visible but not yet functional. Future development aims to imp
 ## Link to the Deployed Application
 
 The application can be accessed here:
-**TBA**
+**[https://wt2-moviemeter.onrender.com/](https://wt2-moviemeter.onrender.com/)**
 
 ## Additional features
 
