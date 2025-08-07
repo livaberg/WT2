@@ -16,7 +16,6 @@ body {
   line-height: 1.6;
   display: flex;
   flex-direction: column;
-  margin: 0;
 
   background-color: #e8efff;
   background-image:
@@ -28,17 +27,13 @@ body {
 }
 
 .header {
-  background-color: #f3e4ee;
+  background-color: #fdf1ea;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 30px;
   color: #817e7e;
   height: 100px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
 }
 
 .logo-title {
@@ -85,13 +80,15 @@ body {
 }
 
 .controls button:hover,
-.controls select:hover {
+.controls select:hover,
+#genreFilter:hover:not(:disabled) {
   background: #f0f0f0;
   border-color: #6a7dbf;
 }
 
 .controls input[type='text'],
-.controls select {
+.controls select,
+#genreFilter {
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   border: 1px solid #b0b0b0;
@@ -145,16 +142,22 @@ body {
 
 .main-content {
   max-width: none;
-  padding: 6rem;
+  padding: 2rem 1rem;
 }
 
-#mm-logo {
-  position: absolute;
-  bottom: 57vh;
-  left: 18vw;
-  height: 50vh;
-  z-index: 999;
-  pointer-events: none;
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.mm-logo {
+  height: 300px;
+  width: auto;
+  opacity: 0.3;
+  margin: auto;
 }
 
 .main-content h2 {
@@ -165,10 +168,6 @@ body {
   margin-bottom: 40px;
   color: #817e7e;
   text-align: center;
-}
-
-.main-content img {
-  height: 1000px;
 }
 
 .main-content p {
@@ -185,6 +184,7 @@ body {
 }
 
 .visualization {
+  width: 100%;
   max-width: 1200px;
   background-color: white;
   padding: 1rem;
@@ -212,23 +212,6 @@ body {
   gap: 1rem;
   font-size: 1.5rem;
   color: #555;
-}
-
-#genreFilter {
-  padding: 0.5rem 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #b0b0b0;
-  border-radius: 6px;
-  cursor: pointer;
-  transition:
-    border-color 120ms ease,
-    box-shadow 120ms ease,
-    background-color 120ms ease;
-}
-
-#genreFilter:hover:not(:disabled) {
-  border-color: #8aaefc;
-  background-color: #f6f9ff;
 }
 
 #genreFilter:focus-visible {
